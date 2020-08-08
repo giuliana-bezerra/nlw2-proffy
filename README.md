@@ -19,14 +19,14 @@ Para executar, siga a seguinte ordem de comandos:
   yarn start
   ```
 
-- web:
+- Web:
 
   ```
   cd web/
   yarn start
   ```
 
-- mobile:
+- Mobile:
   ```
   cd mobile/
   yarn start
