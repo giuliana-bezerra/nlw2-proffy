@@ -1,5 +1,6 @@
 # Proffy
-![logo](web/src/assets/images/logo.svg)
+
+![logo](mobile/src/assets/images/landing.png)
 
 Sistema criado durante a NLW#2, que permite o cadastramento de professores para dar aulas e o agendamento de aulas pelos alunos.
 
@@ -11,19 +12,21 @@ Para configurar o ambiente de execução do projeto, siga as orientações [dess
 
 Para executar, siga a seguinte ordem de comandos:
 
-* Server:
+- Server:
+
   ```
   cd server/
   yarn start
-  ``` 
+  ```
 
-* web:
+- web:
+
   ```
   cd web/
   yarn start
   ```
 
-* mobile:
+- mobile:
   ```
   cd mobile/
   yarn start
@@ -33,4 +36,4 @@ O projeto mobile pode ser executado no celular, ao escanear o código do Expo, o
 
 ```
 ${SDK_HOME}/emulator @NOME-DO-EMULADOR
-``` 
+```
