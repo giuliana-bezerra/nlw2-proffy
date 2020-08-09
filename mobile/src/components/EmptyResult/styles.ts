@@ -1,19 +1,21 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    width: '100%',
+  },
   emptyResultImage: {
-    marginTop: 60,
-    height: 1200,
-    width: 120,
+    width: 150,
     flex: 1,
     alignSelf: 'center',
+    resizeMode: 'contain',
   },
 
   emptyResultText: {
     color: '#8257E5',
     fontFamily: 'Poppins_400Regular',
     fontSize: 20,
-    lineHeight: 30,
     flex: 1,
     alignSelf: 'center',
   },

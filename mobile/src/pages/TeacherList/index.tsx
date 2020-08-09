@@ -11,11 +11,48 @@ import Teacher from '../../domain/Teacher';
 
 import styles from './styles';
 import EmptyResult from '../../components/EmptyResult';
+import DropDown from '../../components/DropDown';
 
 interface TeacherListProps {
   favorites: Array<Teacher>;
   loadFavorites: Function;
 }
+
+const subjects = [
+  { label: 'Artes', value: 'Artes' },
+  { label: 'Biologia', value: 'Biologia' },
+  { label: 'Ciências', value: 'Ciências' },
+  { label: 'Educação Física', value: 'Educação Física' },
+  { label: 'Física', value: 'Física' },
+  { label: 'Geografia', value: 'Geografia' },
+  { label: 'História', value: 'História' },
+  { label: 'Matemática', value: 'Matemática' },
+  { label: 'Português', value: 'Português' },
+  { label: 'Química', value: 'Química' },
+];
+const weekDays = [
+  { label: 'Segunda', value: '1' },
+  { label: 'Terça', value: '2' },
+  { label: 'Quarta', value: '3' },
+  { label: 'Quinta', value: '4' },
+  { label: 'Sexta', value: '5' },
+  { label: 'Sábado', value: '6' },
+  { label: 'Domingo', value: '0' },
+];
+
+const timeOptions = [
+  { label: '8 horas', value: '8:00' },
+  { label: '9 horas', value: '9:00' },
+  { label: '10 horas', value: '10:00' },
+  { label: '11 horas', value: '11:00' },
+  { label: '12 horas', value: '12:00' },
+  { label: '13 horas', value: '13:00' },
+  { label: '14 horas', value: '14:00' },
+  { label: '15 horas', value: '15:00' },
+  { label: '16 horas', value: '16:00' },
+  { label: '17 horas', value: '17:00' },
+  { label: '18 horas', value: '18:00' },
+];
 
 const TeacherList: React.FC<TeacherListProps> = ({
   favorites,
@@ -47,7 +84,6 @@ const TeacherList: React.FC<TeacherListProps> = ({
         },
       })
       .then((res) => {
-        console.log(res.data);
         setTeachers(res.data);
         setFilterVisible(false);
       });
@@ -66,48 +102,30 @@ const TeacherList: React.FC<TeacherListProps> = ({
         {isFiltersVisible && (
           <View style={styles.searchForm}>
             <Text style={styles.label}>Matéria</Text>
-            <View style={styles.input}>
-              <Picker
-                selectedValue={subject}
-                onValueChange={(text) => setSubject(text)}
-              >
-                <Picker.Item label='Selecionar...' value='' />
-                <Picker.Item label='Artes' value='Artes' />
-                <Picker.Item label='Biologia' value='Biologia' />
-                <Picker.Item label='Ciências' value='Ciências' />
-                <Picker.Item label='Educação Física' value='Educação Física' />
-                <Picker.Item label='Física' value='Física' />
-                <Picker.Item label='Geografia' value='Geografia' />
-                <Picker.Item label='História' value='História' />
-                <Picker.Item label='Matemática' value='Matemática' />
-                <Picker.Item label='Português' value='Português' />
-                <Picker.Item label='Química' value='Química' />
-              </Picker>
-            </View>
-
-            <Text style={styles.label}>Dia da Semana</Text>
-            <View style={styles.input}>
-              <Picker
-                selectedValue={week_day}
-                onValueChange={(text) => setWeekDay(text)}
-              >
-                <Picker.Item label='Selecionar...' value='' />
-                <Picker.Item label='Segunda-feira' value='1' />
-                <Picker.Item label='Terça-feira' value='2' />
-                <Picker.Item label='Quarta-feira' value='3' />
-                <Picker.Item label='Quinta-feira' value='4' />
-                <Picker.Item label='Sexta-feira' value='5' />
-                <Picker.Item label='Sábado-feira' value='6' />
-                <Picker.Item label='Domingo-feira' value='0' />
-              </Picker>
-            </View>
-            <Text style={styles.label}>Horário</Text>
-            <TextInput
-              style={styles.input}
-              value={time}
-              onChangeText={(text) => setTime(text)}
-              placeholder='Qual horário?'
+            <DropDown
+              items={subjects}
+              onChangeValue={setSubject}
+              value={subject}
             />
+
+            <View style={styles.inputGroup}>
+              <View style={styles.inputBlock}>
+                <Text style={styles.label}>Dia da Semana</Text>
+                <DropDown
+                  items={weekDays}
+                  onChangeValue={setWeekDay}
+                  value={week_day}
+                />
+              </View>
+              <View style={styles.inputBlock}>
+                <Text style={styles.label}>Horário</Text>
+                <DropDown
+                  items={timeOptions}
+                  onChangeValue={setTime}
+                  value={time}
+                />
+              </View>
+            </View>
             <RectButton onPress={filterTeachers} style={styles.submitButton}>
               <Text style={styles.submitButtonText}>Filtrar</Text>
             </RectButton>

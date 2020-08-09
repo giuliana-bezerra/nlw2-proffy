@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   teacherList: {
     marginTop: -40,
   },
+  emptyResult: { marginTop: -40 },
   searchForm: {
     marginBottom: 24,
   },

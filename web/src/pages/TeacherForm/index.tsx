@@ -64,12 +64,11 @@ function TeacherForm() {
         schedule: scheduleItems,
       })
       .then((res) => {
-        console.log(res);
         alert('Cadastro realizado com sucesso!');
         history.push('/');
       })
-      .catch((res) => {
-        console.log(res);
+      .catch((err) => {
+        console.log(err);
         alert('Erro no cadastro!');
       });
   }
